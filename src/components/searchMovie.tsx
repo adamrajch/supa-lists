@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import React, { ReactElement, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import constants from "../../constants";
 import { MovieCardModal } from "./movieCardModal";
 export default function SearchMovie(props: any): ReactElement {
   const [movies, setMovies] = useState(null);
@@ -28,7 +27,7 @@ export default function SearchMovie(props: any): ReactElement {
   const searchMovies = async (query) => {
     setLoading(true);
     const temp = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${constants.TMDB_API_KEY}&query=${query}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${query}`
     ).then((res) => res.json());
 
     if (temp.results) {

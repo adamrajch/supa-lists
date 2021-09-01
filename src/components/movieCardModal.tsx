@@ -25,7 +25,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../client";
-import constants from "../../constants";
 export function MovieCardModal(props: any) {
   const { isLargeRow, movie, lists } = props;
   const [mov, setMov] = useState(null);
@@ -97,7 +96,7 @@ export function MovieCardModal(props: any) {
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const movieDetailUrl = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${constants.TMDB_API_KEY}`;
+  const movieDetailUrl = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`;
   useEffect(() => {
     async function fetchData() {
       const request = await fetch(movieDetailUrl).then((res) => res.json());

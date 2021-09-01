@@ -32,6 +32,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/movieRow.js" // "src/components/movieBanner.js"
+    "src/components/movieRow.tsx" // "src/components/movieBanner.js"
   ]
 }
