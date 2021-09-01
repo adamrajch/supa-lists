@@ -1,7 +1,7 @@
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { Box, Flex, Heading, Image } from "@chakra-ui/react";
-import "./movieRow.module.css";
 import { MovieCardModal } from "./movieCardModal";
+import "./movieRow.module.css";
 
 export default function MovieRow({
   title,
@@ -10,7 +10,7 @@ export default function MovieRow({
   lists,
   user,
   fetchLists,
-}) {
+}: any) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
