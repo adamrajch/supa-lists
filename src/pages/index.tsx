@@ -8,7 +8,7 @@ export default function Home(): ReactElement {
   async function fetchUser() {
     const profileData = await supabase.auth.user();
     if (profileData) {
-      router.push("/dashboard/lists/movies");
+      router.push("/dashboard");
     } else {
       router.push("/login");
     }
