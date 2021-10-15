@@ -13,25 +13,13 @@ export default function Layout({ children, user }: any): JSX.Element {
     >
       <MobileTopBar />
       <Flex flex="1">
-        <Sidebar
-          display={{ base: "none", md: "flex" }}
-          user={user}
-          h="full"
-
-          // overflowY="hidden"
-        />
+        <Sidebar display={{ base: "none", md: "flex" }} user={user} h="full" />
         <Flex
-          // h="100%"
-
           h="100vh"
-          // h="full"
-          // mx={{ base: "4px", lg: 25 }}
           align="center"
           flexDir="column"
           pt={6}
-          // flexGrow={1}
           w="100%"
-          // w="full"
           overflowY="scroll"
           css={{
             "&::-webkit-scrollbar": {
@@ -40,8 +28,6 @@ export default function Layout({ children, user }: any): JSX.Element {
             "&::MsOverflowStyle": "none" /* IE and Edge */,
             " &::scrollbarWidth": "none" /* Firefox */,
           }}
-          // maxW={}
-          // overflow={["hidden",]}
         >
           {children}
         </Flex>

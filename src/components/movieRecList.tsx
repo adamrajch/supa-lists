@@ -1,6 +1,7 @@
-import { AddIcon, Icon, SettingsIcon } from "@chakra-ui/icons";
+import { SearchIcon, SettingsIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Button,
   Container,
   Flex,
   Heading,
@@ -10,7 +11,6 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  SimpleGrid,
   VStack,
 } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
@@ -20,16 +20,28 @@ import EditMovieListModal from "./editMovieListModal";
 import MovieCard from "./movieCard";
 
 export default function MovieRecList(props: any): ReactElement {
-  const { lists, user, list } = props;
+  const { lists, user, list, fetchLists } = props;
   console.log(lists);
   return (
     <VStack mt={3}>
-      <SimpleGrid columns={[2, 3]} w="100%">
-        <Box display={["none", "block"]} />
-        <Heading fontSize={["2xl", "4xl"]}>Movie Recs</Heading>
-        <AddMovieListModal user={user} fetchLists={props.fetchLists} />
-      </SimpleGrid>
+      <Container maxW="4xl">
+        <HStack w="100%" align="center" justify="space-between">
+          <Heading fontSize={["2xl", "4xl"]}>My Lists</Heading>
+          <HStack>
+            <Button
+              leftIcon={<SearchIcon />}
+              colorScheme="teal"
+              variant="outline"
+              onClick={() => props.handleTabsChange(1)}
+              size="sm"
+            >
+              Search
+            </Button>
 
+            <AddMovieListModal user={user} fetchLists={props.fetchLists} />
+          </HStack>
+        </HStack>
+      </Container>
       <Container maxW="4xl" h="100%">
         {lists.map((list) => {
           return (
@@ -43,12 +55,8 @@ export default function MovieRecList(props: any): ReactElement {
                 <Heading fontSize={["lg", "3xl"]}>
                   <Link href={`/dashboard/lists/${list.id}`}>{list.title}</Link>
                 </Heading>
-                {/* <Text fontSize="xl">{`${list.movie.length} / 10`} </Text> */}
+
                 <HStack>
-                  <Icon
-                    as={AddIcon}
-                    onClick={() => props.handleTabsChange(1)}
-                  />
                   <Menu>
                     <MenuButton
                       as={IconButton}

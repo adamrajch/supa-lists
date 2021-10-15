@@ -21,7 +21,7 @@ import {
   Text,
   useDisclosure,
   useToast,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import React from "react";
 import { supabase } from "../../client";
@@ -184,7 +184,7 @@ export function MediaCard(props: any) {
                       <>
                         {lists.map((list) => (
                           <MenuItem
-                            key={list.id}
+                            key={list.title}
                             onClick={() => {
                               props.createMedia(list.id, show), onClose();
                             }}

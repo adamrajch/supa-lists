@@ -13,7 +13,8 @@ import React from "react";
 import Banner from "./movieBanner";
 import requests from "./movieConstants";
 import MovieRow from "./movieRow";
-export default function SearchMovieModal(props: any) {
+import SearchMovie from "./searchMovie";
+export default function SearchMovieModal({ lists, user, fetchLists }: any) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -49,17 +50,21 @@ export default function SearchMovieModal(props: any) {
               },
             }}
           >
-            <Banner />
             <Box>
-              {requests.map((m) => (
-                <MovieRow
-                  key={m.url}
-                  title={m.title}
-                  fetchUrl={`https://api.themoviedb.org/3${m.url}`}
-                  // lists={props.lists}
-                  // createMedia={createMedia}
-                />
-              ))}
+              <Banner />
+              <SearchMovie lists={lists} user={user} fetchLists={fetchLists} />
+              <Box>
+                {requests.map((m) => (
+                  <MovieRow
+                    key={m.url}
+                    title={m.title}
+                    fetchUrl={`https://api.themoviedb.org/3${m.url}`}
+                    lists={lists}
+                    user={user}
+                    fetchLists={fetchLists}
+                  />
+                ))}
+              </Box>
             </Box>
           </ModalBody>
         </ModalContent>

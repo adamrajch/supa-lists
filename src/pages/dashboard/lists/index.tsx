@@ -41,22 +41,6 @@ export default function Lists(): ReactElement {
       fetchLists();
       subscribeLists();
       subscribeMedia();
-      // const mySubscription = supabase
-      //   .from(`lists:user_id=eq.${user.id}`)
-      //   .on("*", () => fetchLists())
-      //   .subscribe();
-
-      // const mediaSub = supabase
-      //   .from(`media:user_id=eq.${user.id}`)
-      //   .on("*", (payload) => {
-      //     console.log("Change received!", payload);
-      //     fetchLists();
-      //   })
-      //   .subscribe();
-      // return () => {
-      //   supabase.removeSubscription(mySubscription),
-      //     supabase.removeSubscription(mediaSub);
-      // };
     }
     console.log("hello:", user);
   }, [user]);
