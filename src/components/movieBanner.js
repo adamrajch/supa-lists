@@ -45,7 +45,7 @@ export default function Banner() {
         >
           {movie?.title || movie?.name || movie?.original_name}
         </Heading>
-        <Button>Add To List</Button>
+
         <Text
           w="45rem"
           lineHeight="1.3"

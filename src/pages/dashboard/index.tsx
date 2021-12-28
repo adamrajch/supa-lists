@@ -1,4 +1,12 @@
-import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from "@chakra-ui/react";
 import Header from "@components/header";
 import Banner from "@components/movieBanner";
 import requests from "@components/movieConstants";
@@ -63,41 +71,47 @@ export default function index({ user }: any): ReactElement {
   return (
     <Box w="100%">
       <Header user={user} />
-      <Tabs index={tabIndex} onChange={handleTabsChange}>
-        <TabList>
-          <Tab>My Recs</Tab>
-          <Tab>Find Movies</Tab>
-        </TabList>
+      <Container maxW="container.xl">
+        <Tabs index={tabIndex} onChange={handleTabsChange} isFitted>
+          <TabList>
+            <Tab>My Recs</Tab>
+            <Tab>Find Movies</Tab>
+          </TabList>
 
-        <TabPanels>
-          <TabPanel p={0}>
-            <MovieRecList
-              lists={lists}
-              user={user}
-              fetchLists={fetchLists}
-              handleTabsChange={handleTabsChange}
-            />
-          </TabPanel>
-          <TabPanel p={0}>
-            <Box>
-              <Banner />
-              <SearchMovie lists={lists} user={user} fetchLists={fetchLists} />
+          <TabPanels>
+            <TabPanel p={0}>
+              <MovieRecList
+                lists={lists}
+                user={user}
+                fetchLists={fetchLists}
+                handleTabsChange={handleTabsChange}
+              />
+            </TabPanel>
+            <TabPanel p={0}>
               <Box>
-                {requests.map((m) => (
-                  <MovieRow
-                    key={m.url}
-                    title={m.title}
-                    fetchUrl={`https://api.themoviedb.org/3${m.url}`}
-                    lists={lists}
-                    user={user}
-                    fetchLists={fetchLists}
-                  />
-                ))}
+                <Banner />
+                <SearchMovie
+                  lists={lists}
+                  user={user}
+                  fetchLists={fetchLists}
+                />
+                <Box>
+                  {requests.map((m) => (
+                    <MovieRow
+                      key={m.url}
+                      title={m.title}
+                      fetchUrl={`https://api.themoviedb.org/3${m.url}`}
+                      lists={lists}
+                      user={user}
+                      fetchLists={fetchLists}
+                    />
+                  ))}
+                </Box>
               </Box>
-            </Box>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>{" "}
+      </Container>
     </Box>
   );
 }
