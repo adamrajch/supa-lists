@@ -110,7 +110,7 @@ export default function index({ user }: any): ReactElement {
               </Box>
             </TabPanel>
           </TabPanels>
-        </Tabs>{" "}
+        </Tabs>
       </Container>
     </Box>
   );

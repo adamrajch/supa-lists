@@ -17,8 +17,8 @@ export default function EmailLoginForm() {
     if (!email) return;
 
     const { error, user, session } = await supabase.auth.signIn(
-      { email },
-      { redirectTo: "https://supa-lists.vercel.app/dashboard" }
+      { email }
+      // { redirectTo: "https://supa-lists.vercel.app/dashboard" }
     );
     console.log(user, session, error);
     if (error) {
