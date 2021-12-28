@@ -6,7 +6,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useColorModeValue } from "@chakra-ui/system";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { supabase } from "../../../client";
 export default function EmailLoginForm() {
   const [email, setEmail] = useState("");
@@ -17,8 +17,8 @@ export default function EmailLoginForm() {
     if (!email) return;
 
     const { error, user, session } = await supabase.auth.signIn(
-      { email }
-      // { redirectTo: "https://supa-lists.vercel.app/dashboard" }
+      { email },
+      { redirectTo: "https://supa-lists.vercel.app/dashboard" }
     );
     console.log(user, session, error);
     if (error) {
@@ -35,10 +35,6 @@ export default function EmailLoginForm() {
     setEmail(e.target.value);
   }
 
-  useEffect(() => {
-    console.log("error change:", error);
-    console.log(error);
-  }, [error]);
   return (
     <form>
       <FormControl>
